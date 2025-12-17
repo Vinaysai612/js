@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="calcold.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    </head>
+    <body>
+        <script>
+            let ans = "";
+            let pre = "";
+            let ope = "";
+        
+            function update() {
+                document.getElementById("h12").textContent = pre + " " + ope + " " + ans;
+            }
+        
+            function fun1(val) {
+                if (val == '.' && ans.includes('.')){
+                    return
+                } 
+                else{
+                    ans += val;
+                    update();
+                }
+            }
+        
+            function operater(op) {
+                if (ans === "") return;
+                if (ope) {
+                    calc();
+                }
+                pre = ans;
+                ope = op;
+                ans = "";
+                update();
+            }
+        
+            function calc() {
+                if (ans === "" || pre === "" || ope === "") return;
+        
+                let res = "";
+                const prev = parseFloat(pre);
+                const curr = parseFloat(ans);
+        
+                switch (ope) {
+                    case '+':
+                        res = prev + curr;
+                        break;
+                    case '-':
+                        res = prev - curr;
+                        break;
+                    case '*':
+                        res = prev * curr;
+                        break;
+                    case '/':
+                        if (curr === 0) {
+                            alert('Cannot divide by zero');
+                            clear();
+                            return;
+                        }
+                        res = prev / curr;
+                        break;
+                        case '%':
+                            res=prev%curr;
+                            break;
+                    default:
+                        return;
+                }
+                ans = res.toString();
+                ope = "";
+                pre = "";
+                // update();
+                document.getElementById("h13").textContent =ans;
+
+            }
+        
+            function fun2() {
+                ans = "";
+                ope = "";
+                pre = "";
+                update();
+                document.getElementById("h13").innerHTML="";
+
+
+            }
+            function backspace() {
+            ans = ans.slice(0, -1);
+            update();
+        }
+        </script>
+        <!-- <h1>Calculator</h1>-->
+        <div id="div1">
+            <div id="div2">
+                <h2 id="h12"></h2>
+                <h2 id="h13" style="color: white; width: 93%;text-align: right; margin-right: 5%; margin-top: 0; font-size:30px;"></h2>
+            </div>
+            <div id="div3">
+                <ul>
+                    <li  id="l1" onclick="fun2()">AC</li>
+                    <li id="l2" onclick="operater('%')">%</li>
+                    <li id="l3"><i class="material-icons" onclick="backspace()">backspace</i></li>
+                    <li id="l4" style="font-size: 220%;" onclick="operater('/')">&divide;</li>
+                    <li id="l5" onclick="fun1('7')" >7</li>
+                    <li id="l6" onclick="fun1('8')">8</li>
+                    <li id="l7" onclick="fun1('9')">9</li>
+                    <li id="l8" style="font-size: 220%;" onclick="operater('*')">&times;</li>
+                    <li id="l9" onclick="fun1('4')">4</li>
+                    <li id="l10" onclick="fun1('5')">5</li>
+                    <li id="l11" onclick="fun1('6')">6</li>
+                    <li id="l12" style="font-size: 200%;" onclick="operater('-')"> &minus;</li>
+                    <li id="l13" onclick="fun1('1')">1</li>
+                    <li id="l14" onclick="fun1('2')">2</li>
+                    <li id="l15" onclick="fun1('3')">3</li>
+                    <li id="l16" style="font-size: 220%;" onclick="operater('+')">&plus;</li>
+                    <li id="l17"onclick="fun1('00')">00</li>
+                    <li id="l18"onclick="fun1('0')">0</li>
+                    <li id="l19"onclick="fun1('.')">.</li>
+                    <li id="l20" style="font-size: 220%;" onclick="calc()">&equals;</li>
+
+
+
+                </ul>
+
+            </div>
+            
+
+        </div>
+        <div id="div4">
+
+        </div>
+    </body>
+</html>
