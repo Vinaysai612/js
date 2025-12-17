@@ -6,33 +6,94 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
     <script>
-        
+        var a=''; 
+        function operation(op) {
+            var e = document.getElementById("he3");
+            var d = document.getElementById("he4");
+            if(typeof op == "number")
+        {
+            d.innerHTML += op;
+            a = a + String(op);
+            return;
+        }
+        else{
+
+            switch(op) {
+                case 'AC':
+                    d.innerHTML = "";
+                    e.innerHTML = "";
+                    a='';
+                    return;
+                case 'b':
+                    d.innerHTML = d.innerHTML.slice(0, -1);
+                    a=a.slice(0,-1);
+                    return;
+                case '+/-':
+                    d.innerHTML = d.innerHTML * -1;
+                    a=a*-1;
+                    return;
+                case '%':
+                    d.innerHTML += '%';
+                    a=a+"%";
+                        return;
+               case '-':
+                    d.innerHTML += '-';
+                    a = a + '-';
+                    return;
+                            
+                case '+':
+                    d.innerHTML += '+';
+                    a = a + '+';
+                    return;
+                case '*':
+                    d.innerHTML += '×';
+                    a = a + '*';
+                    return;
+                case '/':
+                    d.innerHTML += '÷';
+                    a = a + '/';
+                    return;
+                case '.':
+                    d.innerHTML += '.';
+                    a = a + '.';
+                    return;
+                case '=':
+                    e.innerHTML = d.innerHTML;
+                    d.innerHTML = eval(a);
+                    a = eval(a);
+                    return; 
+                }
+            }
+        }
     </script>
     <body>
-        <h1>Calculater</h1>
+        <h1 style="color: rgb(255, 255, 255); text-align: center; margin-top: 100px;">CALCULATER</h1>
         <div id="div1">
-            <div id="div2"></div>
+            <div id="div2"> 
+                <h3 id="he3"></h3>
+                <h4 id="he4"></h4>
+            </div>
             <ul>
-                <li><i class="material-icons" style="font-size:32px">backspace</i></li>
-                <li style="font-size: 33px;" class="li1">AC</li>
-                <li style="font-size: 35px;" class="li1">%</li>
-                <li style="font-size: 35px;" class="li3">&divide;</li>
-                <li style="font-size: 35px;" class="li2">7</li>
-                <li style="font-size: 35px;" class="li2">8</li>
-                <li style="font-size: 35px;" class="li2">9</li>
-                <li style="font-size: 35px;" class="li3">&times;</li>
-                <li style="font-size: 35px;" class="li2">4</li>
-                <li style="font-size: 35px;" class="li2">5</li>
-                <li style="font-size: 35px;" class="li2">6</li>
-                <li style="font-size: 35px;"class="li3">&minus;</li>
-                <li style="font-size: 35px;" class="li2">1</li>
-                <li style="font-size: 35px;" class="li2">2</li>
-                <li style="font-size: 35px;" class="li2">3</li>
-                <li style="font-size: 35px;"class="li3">+</li>
-                <li style="font-size: 35px;" class="li2">+/-</li>
-                <li style="font-size: 35px;" class="li2">0</li>
-                <li style="font-size: 35px;" class="li2">.</li>
-                <li style="font-size: 35px;"class="li3">=</li>
+                <li class="li1" onclick="operation('b')" ><i class="material-icons" style="font-size:32px" >backspace</i></li>
+                <li style="font-size: 33px;" class="li1" onclick="operation('AC')">AC</li>
+                <li style="font-size: 35px;" class="li1" onclick="operation('%')">%</li>
+                <li style="font-size: 35px;" class="li3" onclick="operation('/')">&divide;</li>
+                <li style="font-size: 35px;" class="li2" onclick="operation(7)">7</li>
+                <li style="font-size: 35px;" class="li2" onclick="operation(8)">8</li>
+                <li style="font-size: 35px;" class="li2" onclick="operation(9)">9</li>
+                <li style="font-size: 35px;" class="li3" onclick="operation('*')">&times;</li>
+                <li style="font-size: 35px;" class="li2" onclick="operation(4)">4</li>
+                <li style="font-size: 35px;" class="li2" onclick="operation(5)">5</li>
+                <li style="font-size: 35px;" class="li2" onclick="operation(6)">6</li>
+                <li style="font-size: 35px;"class="li3" onclick="operation('-')">&minus;</li>
+                <li style="font-size: 35px;" class="li2" onclick="operation(1)">1</li>
+                <li style="font-size: 35px;" class="li2" onclick="operation(2)">2</li>
+                <li style="font-size: 35px;" class="li2" onclick="operation(3)">3</li>
+                <li style="font-size: 35px;"class="li3" onclick="operation('+')">+</li>
+                <li style="font-size: 35px;" class="li2" onclick="operation('+/-')">+/-</li>
+                <li style="font-size: 35px;" class="li2" onclick="operation(0)">0</li>
+                <li style="font-size: 35px;" class="li2" onclick="operation('.')">.</li>
+                <li style="font-size: 35px;"class="li3" onclick="operation('=')">=</li>
                 
             </ul>
 
